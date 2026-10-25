@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "AI Chatbot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\":\"New conversation\"}"
+        },
+        "url": "{{baseUrl}}/sessions"
+      }
+    },
+    {
+      "name": "List sessions",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/sessions"
+      }
+    },
+    {
+      "name": "Get messages",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/sessions/{{sessionId}}/messages"
+      }
+    },
+    {
+      "name": "Send chat message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"sessionId\":\"{{sessionId}}\",\"message\":\"Explain Java records\",\"provider\":\"GEMINI\"}"
+        },
+        "url": "{{baseUrl}}/chat"
+      }
+    },
+    {
+      "name": "Delete session",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/sessions/{{sessionId}}"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    },
+    {
+      "key": "sessionId",
+      "value": ""
+    }
+  ]
+}
